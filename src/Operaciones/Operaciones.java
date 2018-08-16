@@ -11,6 +11,7 @@ public class Operaciones {
 		Vista objVista = new Vista();
 
 		Controlador controlador = new Controlador(objVista, objModelo);
+		controlador.iniciar_vista();
 		objVista.setVisible(true);
 
 	}
