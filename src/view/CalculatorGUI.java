@@ -28,21 +28,21 @@ public class CalculatorGUI extends JFrame{
 		setSize(290, 300);
 		setLayout(null);
 		Container ctn = this.getContentPane();
-        ctn.setBackground(new Color(255,255,224));
+        ctn.setBackground(new Color(206,206,206));
 		
-		jb_sum = new JButton("+");
-		jb_sum.setBounds(25,155,50,50);		
+		jb_sum = new JButton("suma");
+		jb_sum.setBounds(15,155,80,40);		
 		
-		jb_subtraction = new JButton("-");
-		jb_subtraction.setBounds(85,155,50,50);
+		jb_subtraction = new JButton("resta");
+		jb_subtraction.setBounds(80,155,80,40);
 		
-		jb_multiplication = new JButton("*");
-		jb_multiplication.setBounds(145,155,50,50);
+		jb_multiplication = new JButton("multi");
+		jb_multiplication.setBounds(140,155,80,40);
 		
-		jb_division = new JButton("/");
-		jb_division.setBounds(205,155,50,50);
+		jb_division = new JButton("divis");
+		jb_division.setBounds(200,155,80,40);
 		
-		jb_clean = new JButton("Clean");
+		jb_clean = new JButton("Clear");
 		jb_clean.setBounds(95,220, 100, 30);
 		
 		jtf_number1 = new JTextField();

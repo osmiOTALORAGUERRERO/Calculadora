@@ -2,6 +2,9 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+
+import javax.swing.JOptionPane;
 
 import model.*;
 import view.*;
@@ -50,30 +53,46 @@ public class Controller implements ActionListener{
 	
 	private void metodoSuma()
 	{
-		 objModel.setNumber1(Double.parseDouble(objView.jtf_number1.getText()));
-		 objModel.setNumber2(Double.parseDouble(objView.jtf_number2.getText()));
-		 objView.jtf_answer.setText(""+objModel.sum());
+		try {
+			objModel.setNumber1(Double.parseDouble(objView.jtf_number1.getText()));
+			objModel.setNumber2(Double.parseDouble(objView.jtf_number2.getText()));
+			objView.jtf_answer.setText(""+objModel.sum());			
+		} catch (NumberFormatException  e) {
+			JOptionPane.showMessageDialog(null, "Erro en un numero, evite letras y comas", "Error Numerico", JOptionPane.WARNING_MESSAGE);
+		}
 	}
 	 
 	private void metodoResta()
 	{
-		objModel.setNumber1(Double.parseDouble(objView.jtf_number1.getText()));
-		objModel.setNumber2(Double.parseDouble(objView.jtf_number2.getText()));
-		objView.jtf_answer.setText(""+objModel.subtraction());
+		try {
+			objModel.setNumber1(Double.parseDouble(objView.jtf_number1.getText()));
+			objModel.setNumber2(Double.parseDouble(objView.jtf_number2.getText()));
+			objView.jtf_answer.setText(""+objModel.subtraction());
+		} catch (NumberFormatException  e) {
+			JOptionPane.showMessageDialog(null, "Erro en un numero, evite letras y comas", "Error Numerico", JOptionPane.WARNING_MESSAGE);
+		}
 	}
 	
 	private void metodoMultiplicar()
 	{
-		objModel.setNumber1(Double.parseDouble(objView.jtf_number1.getText()));
-		objModel.setNumber2(Double.parseDouble(objView.jtf_number2.getText()));
-		objView.jtf_answer.setText(""+objModel.multiplication());
+		try {			
+			objModel.setNumber1(Double.parseDouble(objView.jtf_number1.getText()));
+			objModel.setNumber2(Double.parseDouble(objView.jtf_number2.getText()));
+			objView.jtf_answer.setText(""+objModel.multiplication());
+		} catch (NumberFormatException  e) {
+			JOptionPane.showMessageDialog(null, "Erro en un numero, evite letras y comas", "Error Numerico", JOptionPane.WARNING_MESSAGE);
+		}
 	}
 	
 	private void metodoDividir()
 	{
-		objModel.setNumber1(Double.parseDouble(objView.jtf_number1.getText()));
-		objModel.setNumber2(Double.parseDouble(objView.jtf_number2.getText()));
-		objView.jtf_answer.setText(""+objModel.division());
+		try {
+			objModel.setNumber1(Double.parseDouble(objView.jtf_number1.getText()));
+			objModel.setNumber2(Double.parseDouble(objView.jtf_number2.getText()));
+			objView.jtf_answer.setText(""+objModel.division());
+		} catch (NumberFormatException  e) {
+			JOptionPane.showMessageDialog(null, "Erro en un numero, evite letras y comas", "Error Numerico", JOptionPane.WARNING_MESSAGE);
+		}
 	}
 	
 	public void cleanScreen() {
