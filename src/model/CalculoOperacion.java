@@ -2,34 +2,43 @@ package model;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 
-public class Model {
+public class CalculoOperacion {
 	
-	private String operacion = "0";
-	private String resultado;
+	private ArrayList<String> operacion = new ArrayList<String>();
+	private String strOperacion;
+	private String resultado = "0";
 	private NumberFormat df = new DecimalFormat("#0.000");
 	
 	public String getOperacion() {
-		return operacion;
+		return strOperacion;
 	}
 	
-	public String setOperacion(double operacion) {
+	public void setOperacion(ArrayList<String> operacion) {
 		this.operacion = operacion;
 	}
-
-	public String sum(){
-		return df.format(this.number1 + this.number2);
+	
+	public String calcular() {
+		
+		return resultado;
 	}
 	
-	public String subtraction(){
-		return df.format(this.number1 - this.number2);
+	public boolean sintaxisCorrecta() {
+		return false;
 	}
 	
-	public String multiplication(){
-		return df.format(this.number1 * this.number2);
+	public void crearArrayOperacion() {
+		
 	}
 	
-	public String division(){
-		return df.format(this.number1 / this.number2);
+	public void realizarOperaciones() {
+		
 	}
+	
+	
+	public void formatoNumero() {
+		
+	}
+	
 }

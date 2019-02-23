@@ -8,7 +8,7 @@ public class Calculator {
 
 	public static void main(String[] args) {
 		
-		Model objModel = new Model();
+		CalculoOperacion objModel = new CalculoOperacion();
 		CalculatorGUI objView = new CalculatorGUI();
 
 		//Controller controller = new Controller(objView, objModel);
