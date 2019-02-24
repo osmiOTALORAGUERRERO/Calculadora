@@ -19,31 +19,30 @@ public class Controller implements ActionListener{
 	{
 		this.objView = objView;
 		this.objModel = objModel;
-		
+		this.objView.jpPanel1.jbClear.addActionListener(this);
 		this.objView.jpPanel2.jbEquals.addActionListener(this);
+	}
+	
+	public void startView() {
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{	
-		if (e.getSource() == this.objView.jb_sum)
-			metodoSuma();
-		else if (e.getSource() == this.objView.jb_subtraction)
-			metodoResta();
-		else if (e.getSource() == this.objView.jb_multiplication)
-			metodoMultiplicar();
-		else if(e.getSource() == this.objView.jb_division)
-			metodoDividir();
-		else if(e.getSource() == this.objView.jb_clean)
-			cleanScreen();
+		if(e.getSource() == this.objView.jpPanel2.jbEquals) {
+			calculateResult();
+		}else if(e.getSource() == this.objView.jpPanel1.jbClear) {
+			clearScreen();
+		}
 	}
 	
-
+	public void calculateResult() {
+		this.objModel.setOperacion(objView.jpPanel1.jtfOperation.getText());
+		this.objView.jpPanel1.jtfOperation.setText(objModel.calculateOperation());
+	}
 	
-	
-	public void cleanScreen() {
-		objView.jtf_number1.setText("0.0");
-		objView.jtf_number2.setText("0.0");
-		objView.jtf_answer.setText("");
+	public void clearScreen() {
+		this.objView.jpPanel1.jtfOperation.setText("");
 	}
 }

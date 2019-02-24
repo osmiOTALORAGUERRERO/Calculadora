@@ -10,9 +10,8 @@ public class Calculator {
 		
 		CalculoOperacion objModel = new CalculoOperacion();
 		CalculatorGUI objView = new CalculatorGUI();
-
-		//Controller controller = new Controller(objView, objModel);
-		//controller.startView();
+		Controller controller = new Controller(objView, objModel);
+		controller.startView();
 		objView.setVisible(true);
 	
 	}
