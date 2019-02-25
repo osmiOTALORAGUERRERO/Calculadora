@@ -10,7 +10,7 @@ public class CalculoOperacion {
 	
 	private ArrayList<String> operation = new ArrayList<String>();
 	private String strOperation;
-	private NumberFormat df = new DecimalFormat("#0.000");
+	private NumberFormat df = new DecimalFormat("#0.00");
 	private Operaciones op = new Operaciones();	
 	public String getOperacion() {
 		return strOperation;
@@ -25,7 +25,7 @@ public class CalculoOperacion {
 		String answer = "";
 		crearArrayOperacion();
 		if (operationSintax()) {
-			answer = NumberFormat(performOperations(operation));
+			answer = performOperations(operation);
 		}else {
 			answer = "Sintax Error";
 		}
@@ -125,10 +125,6 @@ public class CalculoOperacion {
 		}
 		
 		return operation.get(0);
-	}
-	
-	private String NumberFormat(String answer) {
-		return answer;
 	}
 	
 }
