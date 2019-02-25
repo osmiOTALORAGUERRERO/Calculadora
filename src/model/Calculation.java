@@ -6,12 +6,13 @@ import java.util.ArrayList;
 
 import com.sun.org.apache.xalan.internal.xsltc.runtime.Operators;
 
-public class CalculoOperacion {
+public class Calculation {
 	
 	private ArrayList<String> operation = new ArrayList<String>();
 	private String strOperation;
 	private NumberFormat df = new DecimalFormat("#0.00");
-	private Operaciones op = new Operaciones();	
+	private Operations op = new Operations();
+	
 	public String getOperacion() {
 		return strOperation;
 	}
@@ -23,7 +24,7 @@ public class CalculoOperacion {
 	
 	public String calculateOperation() {
 		String answer = "";
-		crearArrayOperacion();
+		createOperationArray();
 		if (operationSintax()) {
 			answer = performOperations(operation);
 		}else {
@@ -49,7 +50,7 @@ public class CalculoOperacion {
 		return sintax;
 	}
 	
-	private void crearArrayOperacion() {
+	private void createOperationArray() {
 		String number = "";
 		for(int i=0; i<strOperation.length(); i++) {
 			if(strOperation.charAt(i) != '+' && strOperation.charAt(i) != '-' && strOperation.charAt(i) != '*' && strOperation.charAt(i) != '/') {
@@ -67,7 +68,6 @@ public class CalculoOperacion {
 		}
 		if(!number.equals(""))
 			operation.add(number);
-		System.out.println(operation);
 	}
 	
 	private String performOperations(ArrayList<String> operation) {	
@@ -95,7 +95,6 @@ public class CalculoOperacion {
 		if(!operator.equals("")) {
 			operation.remove(operator);
 			operation.remove(index);
-			System.out.println(operation);
 			return performOperations(operation);
 		}
 		
@@ -120,7 +119,6 @@ public class CalculoOperacion {
 		if(!operator.equals("")) {			
 			operation.remove(operator);
 			operation.remove(index);
-			System.out.println(operation);
 			return performOperations(operation);	
 		}
 		

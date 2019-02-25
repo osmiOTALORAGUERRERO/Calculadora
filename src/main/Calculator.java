@@ -8,12 +8,10 @@ public class Calculator {
 
 	public static void main(String[] args) {
 		
-		CalculoOperacion objModel = new CalculoOperacion();
+		Calculation objModel = new Calculation();
 		CalculatorGUI objView = new CalculatorGUI();
 		Controller controller = new Controller(objView, objModel);
 		controller.startView();
-		objView.setVisible(true);
-	
 	}
 
 }

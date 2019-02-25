@@ -1,6 +1,6 @@
 package model;
 
-public class Operaciones {
+public class Operations {
 	
 	public double sum(double number1, double number2){
 		return number1 + number2;

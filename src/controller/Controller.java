@@ -13,9 +13,9 @@ import view.*;
 public class Controller implements ActionListener{
 
 	private CalculatorGUI objView;
-	private CalculoOperacion objModel;
+	private Calculation objModel;
 	
-	public Controller(CalculatorGUI objView, CalculoOperacion objModel) 
+	public Controller(CalculatorGUI objView, Calculation objModel) 
 	{
 		this.objView = objView;
 		this.objModel = objModel;
@@ -24,7 +24,9 @@ public class Controller implements ActionListener{
 	}
 	
 	public void startView() {
-		
+		objView.setTitle("Calculator");
+		objView.setLocationRelativeTo(null);
+		objView.setVisible(true);
 	}
 
 	@Override
