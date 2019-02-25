@@ -11,7 +11,7 @@ public class CalculoOperacion {
 	private ArrayList<String> operation = new ArrayList<String>();
 	private String strOperation;
 	private NumberFormat df = new DecimalFormat("#0.000");
-	
+	private Operaciones op = new Operaciones();	
 	public String getOperacion() {
 		return strOperation;
 	}
@@ -25,7 +25,7 @@ public class CalculoOperacion {
 		String answer = "";
 		crearArrayOperacion();
 		if (operationSintax()) {
-			answer = NumberFormat(performOperations());
+			answer = NumberFormat(performOperations(operation));
 		}else {
 			answer = "Sintax Error";
 		}
@@ -70,55 +70,62 @@ public class CalculoOperacion {
 		System.out.println(operation);
 	}
 	
-	private String performOperations() {
-		ArrayList<String> reOperation = new ArrayList<String>();
-		Operaciones op = new Operaciones();
+	private String performOperations(ArrayList<String> operation) {	
+		int index = 0;
+		String operator = "";
 		
-		reOperation = operation;
-		while(reOperation.size() != 1) {
-			for(int i=1; i<operation.size(); i+=2) {
-				if(operation.get(i).equals("*")) {
-					reOperation.set(i-1, op.multiplication(Double.parseDouble(operation.get(i-1)), Double.parseDouble(operation.get(i+1)))+"");
-				}else if(operation.get(i).equals("/")) {
-					reOperation.set(i-1, op.division(Double.parseDouble(operation.get(i-1)), Double.parseDouble(operation.get(i+1)))+"");
-				}
-			}
-			System.out.println(reOperation);
-			for(int i=1; i<operation.size(); i+=2) {
-				if(operation.get(i).equals("*")) {
-					reOperation.remove(i);
-					reOperation.remove(i);
-				}else if(operation.get(i).equals("/")) {
-					reOperation.remove(i);
-					reOperation.remove(i);
-				}
-			}
-			operation = reOperation;
-			System.out.println(reOperation);
-			for(int i=1; i<operation.size(); i+=2) {
-				if(operation.get(i).equals("+")) {
-					reOperation.set(i-1, op.sum(Double.parseDouble(operation.get(i-1)), Double.parseDouble(operation.get(i+1)))+"");
-				}else if(operation.get(i).equals("-")) {
-					System.out.println("yes");
-					reOperation.set(i-1, op.subtraction(Double.parseDouble(operation.get(i-1)), Double.parseDouble(operation.get(i+1)))+"");
-				}
-			}
-			for(int i=1; i<operation.size(); i+=2) {
-				if(operation.get(i).equals("+")) {
-					reOperation.remove(i);
-					reOperation.remove(i);
-				}else if(operation.get(i).equals("-")) {
-					reOperation.remove(i);
-					reOperation.remove(i);
-				}
-			}
-			operation = reOperation;
+		if(operation.contains("*") && operation.contains("/")) {
+			if(operation.indexOf("*") < operation.indexOf("/"))
+				operator = "*";
+			else 
+				operator = "/";
+		}else {
+			if(operation.contains("*"))
+				operator = "*";
+			else if(operation.contains("/"))
+				operator = "/";
+		}
+		if(operator.equals("*")) {
+			index = operation.indexOf(operator);
+			operation.set(index-1, op.multiplication(Double.parseDouble(operation.get(index-1)), Double.parseDouble(operation.get(index+1)))+"");
+		}else if(operator.equals("/")) {
+			index = operation.indexOf(operator);
+			operation.set(index-1, op.division(Double.parseDouble(operation.get(index-1)), Double.parseDouble(operation.get(index+1)))+"");
+		}
+		if(!operator.equals("")) {
+			operation.remove(operator);
+			operation.remove(index);
+			System.out.println(operation);
+			return performOperations(operation);
 		}
 		
-		System.out.println(reOperation);
-		return reOperation.get(0);
+		if(operation.contains("+") && operation.contains("-")) {
+			if(operation.indexOf("+") < operation.indexOf("-"))
+				operator = "+";
+			else 
+				operator = "-";
+		}else {
+			if(operation.contains("+"))
+				operator = "+";
+			else if(operation.contains("-"))
+				operator = "-";
+		}		
+		if(operator.equals("+")) {
+			index = operation.indexOf(operator);
+			operation.set(index-1, op.sum(Double.parseDouble(operation.get(index-1)), Double.parseDouble(operation.get(index+1)))+"");
+		}else if(operator.equals("-")) {
+			index = operation.indexOf(operator);
+			operation.set(index-1, op.subtraction(Double.parseDouble(operation.get(index-1)), Double.parseDouble(operation.get(index+1)))+"");
+		}
+		if(!operator.equals("")) {			
+			operation.remove(operator);
+			operation.remove(index);
+			System.out.println(operation);
+			return performOperations(operation);	
+		}
+		
+		return operation.get(0);
 	}
-	
 	
 	private String NumberFormat(String answer) {
 		return answer;
