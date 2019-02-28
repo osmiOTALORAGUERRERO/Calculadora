@@ -1,81 +1,85 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 
-public class CalculatorGUI extends JFrame{
+public class CalculatorGUI extends JFrame implements ActionListener{
 
-	public JButton jb_sum;
-	public JButton jb_subtraction;
-	public JButton jb_multiplication;
-	public JButton jb_division;
-	public JButton jb_clean;
-	public JTextField jtf_number1;
-	public JTextField jtf_number2;
-	public JTextField jtf_answer;
-	public JLabel jl_number1; 
-	public JLabel jl_number2;
-	public JLabel jl_answer;
-	
+	public Panel1 jpPanel1;
+	public Panel2 jpPanel2;
 	
 	public CalculatorGUI(){
 		
-		setSize(290, 300);
-		setLayout(null);
+		setSize(300, 300);
+		setLayout(new BorderLayout());
 		Container ctn = this.getContentPane();
         ctn.setBackground(new Color(206,206,206));
-		
-		jb_sum = new JButton("suma");
-		jb_sum.setBounds(15,155,80,40);		
-		
-		jb_subtraction = new JButton("resta");
-		jb_subtraction.setBounds(80,155,80,40);
-		
-		jb_multiplication = new JButton("multi");
-		jb_multiplication.setBounds(140,155,80,40);
-		
-		jb_division = new JButton("divis");
-		jb_division.setBounds(200,155,80,40);
-		
-		jb_clean = new JButton("Clear");
-		jb_clean.setBounds(95,220, 100, 30);
-		
-		jtf_number1 = new JTextField();
-		jtf_number1.setBounds(100,20,150,30);
-		
-		jtf_number2 = new JTextField();
-		jtf_number2.setBounds(100,60,150,30);
-		
-		jtf_answer = new JTextField();
-		jtf_answer.setBounds(100,100,150,30);
-		jtf_answer.setBackground(Color.WHITE);
-		jtf_answer.setEditable(false);
-		
-		jl_number1 = new JLabel("Numero 1");
-		jl_number1.setBounds(30,20,100,30);
-		
-		jl_number2 = new JLabel("Numero 2"); 
-		jl_number2.setBounds(30,60,100,30);
-		
-		jl_answer = new JLabel("Resultado");
-		jl_answer.setBounds(30,100,100,30);
-		
-		add(jl_number1);
-		add(jtf_number1);
-		add(jl_number2);
-		add(jtf_number2);
-		add(jl_answer);
-		add(jtf_answer);
-		add(jb_sum);
-		add(jb_subtraction);
-		add(jb_multiplication);
-		add(jb_division);
-		add(jb_clean);
+        
+        jpPanel1 = new Panel1();
+        jpPanel2 = new Panel2();
+        
+        actionButtonsp2();
+        
+    	add(jpPanel1, BorderLayout.NORTH);
+    	add(jpPanel2, BorderLayout.CENTER);
+	}
+	
+	private void actionButtonsp2() {
+		jpPanel2.jb0.addActionListener(this);
+		jpPanel2.jb1.addActionListener(this);
+		jpPanel2.jb2.addActionListener(this);
+		jpPanel2.jb3.addActionListener(this);
+		jpPanel2.jb4.addActionListener(this);
+		jpPanel2.jb5.addActionListener(this);
+		jpPanel2.jb6.addActionListener(this);
+		jpPanel2.jb7.addActionListener(this);
+		jpPanel2.jb8.addActionListener(this);
+		jpPanel2.jb9.addActionListener(this);
+		jpPanel2.jbPoint.addActionListener(this);
+		jpPanel2.jbSum.addActionListener(this);
+		jpPanel2.jbSubtraction.addActionListener(this);
+		jpPanel2.jbMultiplication.addActionListener(this);
+		jpPanel2.jbDivision.addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == jpPanel2.jb0) {
+			jpPanel1.jtfOperation.setText(jpPanel1.jtfOperation.getText()+"0");
+		}else if(e.getSource() == jpPanel2.jb1) {
+			jpPanel1.jtfOperation.setText(jpPanel1.jtfOperation.getText()+"1");
+		}else if(e.getSource() == jpPanel2.jb2) {
+			jpPanel1.jtfOperation.setText(jpPanel1.jtfOperation.getText()+"2");
+		}else if(e.getSource() == jpPanel2.jb3) {
+			jpPanel1.jtfOperation.setText(jpPanel1.jtfOperation.getText()+"3");
+		}else if(e.getSource() == jpPanel2.jb4) {
+			jpPanel1.jtfOperation.setText(jpPanel1.jtfOperation.getText()+"4");
+		}else if(e.getSource() == jpPanel2.jb5) {
+			jpPanel1.jtfOperation.setText(jpPanel1.jtfOperation.getText()+"5");
+		}else if(e.getSource() == jpPanel2.jb6) {
+			jpPanel1.jtfOperation.setText(jpPanel1.jtfOperation.getText()+"6");
+		}else if(e.getSource() == jpPanel2.jb7) {
+			jpPanel1.jtfOperation.setText(jpPanel1.jtfOperation.getText()+"7");
+		}else if(e.getSource() == jpPanel2.jb8) {
+			jpPanel1.jtfOperation.setText(jpPanel1.jtfOperation.getText()+"8");
+		}else if(e.getSource() == jpPanel2.jb9) {
+			jpPanel1.jtfOperation.setText(jpPanel1.jtfOperation.getText()+"9");
+		}else if(e.getSource() == jpPanel2.jbPoint) {
+			jpPanel1.jtfOperation.setText(jpPanel1.jtfOperation.getText()+".");
+		}else if(e.getSource() == jpPanel2.jbSum) {
+			jpPanel1.jtfOperation.setText(jpPanel1.jtfOperation.getText()+"+");
+		}else if(e.getSource() == jpPanel2.jbSubtraction) {
+			jpPanel1.jtfOperation.setText(jpPanel1.jtfOperation.getText()+"-");
+		}else if(e.getSource() == jpPanel2.jbMultiplication) {
+			jpPanel1.jtfOperation.setText(jpPanel1.jtfOperation.getText()+"*");
+		}else if(e.getSource() == jpPanel2.jbDivision) {
+			jpPanel1.jtfOperation.setText(jpPanel1.jtfOperation.getText()+"/");
+		}
 		
 	}
 }
