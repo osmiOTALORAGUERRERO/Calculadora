@@ -7,18 +7,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
-
+/**
+ * 
+ * @author osmi
+ *
+ */
 public class CalculatorGUI extends JFrame implements ActionListener{
 
 	public Panel1 jpPanel1;
 	public Panel2 jpPanel2;
-	
+	/**
+	 * Inicio la GUI
+	 */
 	public CalculatorGUI(){
 		
-		setSize(300, 300);
+		setSize(400, 300);
 		setLayout(new BorderLayout());
 		Container ctn = this.getContentPane();
-        ctn.setBackground(new Color(206,206,206));
+        ctn.setBackground(new Color(157,173,255));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         jpPanel1 = new Panel1();
         jpPanel2 = new Panel2();
@@ -28,7 +35,10 @@ public class CalculatorGUI extends JFrame implements ActionListener{
     	add(jpPanel1, BorderLayout.NORTH);
     	add(jpPanel2, BorderLayout.CENTER);
 	}
-	
+	/**
+	 * Asigno las acciones de los botones de los que no requieren de calculos
+	 * numeros y signos
+	 */
 	private void actionButtonsp2() {
 		jpPanel2.jb0.addActionListener(this);
 		jpPanel2.jb1.addActionListener(this);

@@ -1,38 +1,52 @@
 package model;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.ArrayList;
-
-import com.sun.org.apache.xalan.internal.xsltc.runtime.Operators;
-
+/**
+ * In this class is the that perform operation
+ * @author osmi
+ *
+ */
 public class Calculation {
 	
 	private ArrayList<String> operation = new ArrayList<String>();
 	private String strOperation;
-	private NumberFormat df = new DecimalFormat("#0.00");
 	private Operations op = new Operations();
-	
-	public String getOperacion() {
+	/**
+	 * get operation
+	 * @return
+	 */
+	public String getOperation() {
 		return strOperation;
 	}
-	
+	/**
+	 * set operation
+	 * @param strOperacion
+	 */
 	public void setOperacion(String strOperacion) {
 		this.strOperation = strOperacion;
 		operation.clear();
 	}
-	
+	/**
+	 * Esta funcion realiza la operacion con ayuda de otros metodos
+	 * @return
+	 */
 	public String calculateOperation() {
 		String answer = "";
 		createOperationArray();
 		if (operationSintax()) {
 			answer = performOperations(operation);
+			if(answer.equals("Infinity")) {
+				answer = "division error by zero";
+			}
 		}else {
 			answer = "Sintax Error";
 		}
 		return answer;
 	}
-	
+	/**
+	 * Revisa si la sintaxis del string de la operacion es correcto
+	 * @return
+	 */
 	private boolean operationSintax() {
 		boolean sintax = false;
 		if(!strOperation.startsWith("+") || !strOperation.startsWith("-") || !strOperation.startsWith("*") || !strOperation.startsWith("/")) {
@@ -49,7 +63,10 @@ public class Calculation {
 		
 		return sintax;
 	}
-	
+	/**
+	 * Crea la operacion en el arraylist operation segun el estring
+	 * con ese array se podra realizar el calculo de la operacion
+	 */
 	private void createOperationArray() {
 		String number = "";
 		for(int i=0; i<strOperation.length(); i++) {
@@ -69,7 +86,11 @@ public class Calculation {
 		if(!number.equals(""))
 			operation.add(number);
 	}
-	
+	/**
+	 * Aqui realizo la operacion dando el resultado final 
+	 * @param operation
+	 * @return
+	 */
 	private String performOperations(ArrayList<String> operation) {	
 		int index = 0;
 		String operator = "";

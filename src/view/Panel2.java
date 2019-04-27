@@ -1,10 +1,15 @@
 package view;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
+/**
+ * 
+ * @author osmi
+ *
+ */
 public class Panel2 extends JPanel{
 	
 	public JButton jb0;
@@ -23,9 +28,12 @@ public class Panel2 extends JPanel{
 	public JButton jbMultiplication;
 	public JButton jbDivision;
 	public JButton jbEquals;
-	
+	/**
+	 * En este panel creo los botones de numeros y signos
+	 */
 	public Panel2() {
 		setLayout(new GridLayout(4,4,10,10));
+		setBackground(new Color(255,234,157));
 		jb0 = new JButton("0");
 		jb1 = new JButton("1");
 		jb2 = new JButton("2");
