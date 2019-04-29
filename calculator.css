@@ -1,0 +1,56 @@
+body {
+  background: no-repeat url(https://omicrono.elespanol.com/wp-content/uploads/2014/03/fondo-ubuntu-trusty-1-690x431.jpg);
+  background-size: cover;
+  color: #292ea8;
+  font: 300 18px/1.6 "Source Sans Pro",sans-serif;
+  margin: 0;
+  padding: 5em 0 2em;
+  padding-top: 0;
+  text-align: center;
+}
+
+h1 {
+  font: inherit;
+  font-size: 45px;
+  font-weight: 400;
+}
+
+.calculator {
+  background-color: rgba(0, 162, 255);
+  /* border: 0.5em solid #292ea8; */
+  border-radius: 10px;
+  margin-right: 30%;
+  margin-left: 30%;
+  padding: 0.5em;
+}
+
+.text {
+  background-color: rgb(212, 196, 196);
+  border: solid rgba(0, 162, 255);
+  border-radius: 15px;
+  margin: 5px;
+}
+
+.text p{
+  font-size: 40px;
+  margin: 5px;
+  text-align: right;
+}
+
+.buttons {
+  border: solid rgba(0, 162, 255);
+  border-radius: 15px;
+  padding: 5px;
+  margin: 5px;
+}
+
+button {
+  /* background: rgba(0, 162, 255); */
+  color: rgba(0, 162, 255);
+  font: inherit;
+  margin: 0.5em;
+  width: 4em;
+  height: 4em;
+  cursor: pointer;
+  transition: all 1s rgba(0, 162, 255);
+}
