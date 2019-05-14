@@ -16,8 +16,8 @@ h1 {
 }
 
 .calculator {
+  display: inline-block;
   background-color: rgba(0, 162, 255);
-  /* border: 0.5em solid #292ea8; */
   border-radius: 10px;
   margin-right: 30%;
   margin-left: 30%;
@@ -38,6 +38,9 @@ h1 {
 }
 
 .buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr)
   border: solid rgba(0, 162, 255);
   border-radius: 15px;
   padding: 5px;
@@ -45,12 +48,16 @@ h1 {
 }
 
 button {
-  /* background: rgba(0, 162, 255); */
-  color: rgba(0, 162, 255);
-  font: inherit;
+  color: rgb(244, 95, 51);
+  font-size: 18px;
   margin: 0.5em;
   width: 4em;
   height: 4em;
   cursor: pointer;
-  transition: all 1s rgba(0, 162, 255);
+}
+
+button:hover {
+  background: rgba(255, 161, 162);
+  color: rgb(0, 162, 255);
+  border-radius: 5px;
 }
